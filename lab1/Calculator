@@ -1,0 +1,49 @@
+import Foundation
+
+func addition(_ a: Double, _ b: Double) -> Double {return a + b}
+
+func subtraction(_ a: Double, _ b: Double) -> Double {return a - b}
+
+func multiplication(_ a: Double, _ b: Double) -> Double {return a * b}
+
+func division(_ a: Double, _ b: Double) -> Double {
+    if b == 0 {
+        print("Error: Division by zero! >:C ")
+        return 0}
+    return a / b}
+
+
+print("Enter the first number >>")
+if let a = Double(readLine() ?? "") {
+    print("Enter the operation (+, -, *, /) >>")
+    if let operation = readLine() {
+        print("Enter the second number >>")
+        if let b = Double(readLine() ?? "") {
+            var result: Double = 0.0
+            switch operation {
+            case "+":
+                result = addition(a, b)
+            case "-":
+                result = subtraction(a, b)
+            case "*":
+                result = multiplication(a, b)
+            case "/":
+                result = division(a, b)
+            default:
+                print("Error: Unknown operation >:C")
+            }
+            
+            if result.truncatingRemainder(dividingBy: 1) == 0 {
+                print("Result: \(Int(result))")
+            } else {
+                print("Result: \(result)")
+            }
+        } else {
+            print("Error: Invalid number format >:C")
+        }
+    } else {
+        print("Error: Operation not specified >:C ")
+    }
+} else {
+    print("Error: Invalid number format >:C ")
+}
